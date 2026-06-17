@@ -8,7 +8,7 @@ from langchain_core.documents import Document
 from app.core.config import settings
 from app.core.exceptions import NoDocumentsIngestedError
 from app.services.vector_store import VectorStoreService
-from app.dto.query_response import QueryResponseDto
+from app.modules.query.dto import QueryResponseDto
 
 SYSTEM_PROMPT = """You are a contract analysis assistant. Answer the user's question
 ONLY using the contract excerpts provided in the context below.

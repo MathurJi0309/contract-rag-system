@@ -22,3 +22,26 @@ api_router.include_router(
     prefix="/query",
     tags=["Query"]
 )
+
+
+from pathlib import Path
+
+UPLOAD_DIR = Path(__file__).resolve().parents[2] / "data" / "uploads"
+
+print("UPLOAD_DIR =", UPLOAD_DIR)
+
+@api_router.get("/documents/status")
+async def documents_status():
+    files = []
+
+    if UPLOAD_DIR.exists():
+        files = [f.name for f in UPLOAD_DIR.iterdir()]
+
+    return {
+        "path": str(UPLOAD_DIR),
+        "exists": UPLOAD_DIR.exists(),
+        "is_dir": UPLOAD_DIR.is_dir(),
+        "files": files,
+        "docs_count":len(files),
+        "has_documents": len(files) > 0
+    }

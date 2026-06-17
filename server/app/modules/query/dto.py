@@ -8,3 +8,11 @@ class QueryRequestDto(BaseModel):
         min_length=3,
         description="Natural language question about uploaded contracts"
     )
+
+
+
+
+
+class QueryResponseDto(BaseModel):
+    question: str
+    answer: str

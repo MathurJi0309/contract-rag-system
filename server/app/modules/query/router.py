@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 
 from app.core.auth import is_authenticated
 
-from app.dto.query_request import QueryRequestDto
-from app.dto.query_response import QueryResponseDto
+from app.modules.query.dto import QueryRequestDto
+from app.modules.query.dto import QueryResponseDto
 
 from .controller import QueryController
 from .dependencies import get_query_controller

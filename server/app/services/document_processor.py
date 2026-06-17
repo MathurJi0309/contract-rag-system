@@ -34,6 +34,8 @@ class DocumentProcessor:
 
     def save_upload(self, filename: str, content: bytes) -> str:
         os.makedirs(settings.upload_dir, exist_ok=True)
+        os.makedirs(settings.vector_store_dir, exist_ok=True)
+
         extension = Path(filename).suffix.lower()
         if extension not in DOCUMENT_TYPES:
             raise UnsupportedFileTypeError(filename)
