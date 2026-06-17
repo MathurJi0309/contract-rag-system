@@ -50,6 +50,164 @@ The system allows authenticated users to upload contract documents, process them
 
 ---
 
+
+# Frontend Setup
+
+Navigate to the frontend directory:
+
+```bash
+cd frontend
+```
+
+### Create Environment File
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+Update the values if required.
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Frontend
+
+```bash
+npm run dev
+```
+
+The frontend application will start and connect to the backend APIs.
+
+---
+
+# Backend Setup
+
+Navigate to the server directory:
+
+```bash
+cd server
+```
+
+### Create Virtual Environment
+
+```bash
+python3 -m venv venv
+```
+
+### Activate Virtual Environment
+
+Linux / Mac:
+
+```bash
+source venv/bin/activate
+```
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file using `.env.example`.
+
+Example:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+MONGODB_URL=your_mongodb_connection_string
+DATABASE_NAME=contract_analysis
+```
+
+### Required Variables
+
+| Variable       | Description               |
+| -------------- | ------------------------- |
+| OPENAI_API_KEY | OpenAI API Key            |
+| MONGODB_URL    | MongoDB Connection String |
+| DATABASE_NAME  | MongoDB Database Name     |
+
+Other variables can remain unchanged unless customization is required.
+
+---
+
+## Storage Directories
+
+The application automatically creates the required storage directories during runtime:
+
+```text
+data/uploads
+data/vectorstore
+```
+
+No manual setup is required.
+
+---
+
+## Run Backend
+
+Start the FastAPI server:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+Backend URL:
+
+```text
+http://localhost:8000
+```
+
+Swagger Documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+# Usage
+
+### Step 1
+
+Register a new account.
+
+### Step 2
+
+Login using your credentials.
+
+### Step 3
+
+Upload one or more legal or contract documents.
+
+### Step 4
+
+Wait for document processing and indexing to complete.
+
+### Step 5
+
+Ask questions related to the uploaded documents.
+
+### Step 6
+
+Receive answers generated from the retrieved document context.
+
+---
+
 ## System Architecture
 
 ```text
@@ -283,162 +441,6 @@ Return Response
 
 ---
 
-# Frontend Setup
-
-Navigate to the frontend directory:
-
-```bash
-cd frontend
-```
-
-### Create Environment File
-
-Copy the example environment file:
-
-```bash
-cp .env.example .env
-```
-
-Update the values if required.
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Run Frontend
-
-```bash
-npm run dev
-```
-
-The frontend application will start and connect to the backend APIs.
-
----
-
-# Backend Setup
-
-Navigate to the server directory:
-
-```bash
-cd server
-```
-
-### Create Virtual Environment
-
-```bash
-python3 -m venv venv
-```
-
-### Activate Virtual Environment
-
-Linux / Mac:
-
-```bash
-source venv/bin/activate
-```
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-### Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Environment Variables
-
-Create a `.env` file using `.env.example`.
-
-Example:
-
-```env
-OPENAI_API_KEY=your_openai_api_key
-MONGODB_URL=your_mongodb_connection_string
-DATABASE_NAME=contract_analysis
-```
-
-### Required Variables
-
-| Variable       | Description               |
-| -------------- | ------------------------- |
-| OPENAI_API_KEY | OpenAI API Key            |
-| MONGODB_URL    | MongoDB Connection String |
-| DATABASE_NAME  | MongoDB Database Name     |
-
-Other variables can remain unchanged unless customization is required.
-
----
-
-## Storage Directories
-
-The application automatically creates the required storage directories during runtime:
-
-```text
-data/uploads
-data/vectorstore
-```
-
-No manual setup is required.
-
----
-
-## Run Backend
-
-Start the FastAPI server:
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Backend URL:
-
-```text
-http://localhost:8000
-```
-
-Swagger Documentation:
-
-```text
-http://localhost:8000/docs
-```
-
----
-
-# Usage
-
-### Step 1
-
-Register a new account.
-
-### Step 2
-
-Login using your credentials.
-
-### Step 3
-
-Upload one or more legal or contract documents.
-
-### Step 4
-
-Wait for document processing and indexing to complete.
-
-### Step 5
-
-Ask questions related to the uploaded documents.
-
-### Step 6
-
-Receive answers generated from the retrieved document context.
-
----
 
 ## Design Decisions
 
