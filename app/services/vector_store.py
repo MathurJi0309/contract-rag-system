@@ -29,4 +29,11 @@ class VectorStoreService:
         if chunks:
             self.store.add_documents(chunks)
 
+    def similarity_search(
+        self,
+        query: str,
+        k: int,
+    ) -> List[Document]:
+        return self.store.similarity_search(query, k=k)
+
   
