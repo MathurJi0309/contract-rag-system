@@ -206,7 +206,53 @@ Ask questions related to the uploaded documents.
 
 Receive answers generated from the retrieved document context.
 
+
 ---
+
+## Current Limitations
+
+### No User-Specific Document Isolation
+
+Documents uploaded by one authenticated user are currently available to all authenticated users.
+
+Document ownership and access control have not yet been implemented.
+
+### No Conversational Memory
+
+Each question is processed independently.
+
+Previous questions and responses are not retained as conversational context.
+
+### Local Vector Storage
+
+ChromaDB is stored locally inside the project and is not configured as a distributed or managed vector database.
+
+
+
+## Evaluation Objectives
+
+This project demonstrates:
+
+* Document Understanding
+* Semantic Retrieval
+* Retrieval-Augmented Generation (RAG)
+* FastAPI Backend Development
+* Authentication & Authorization
+* Vector Search Implementation
+* AI-Powered Contract Question Answering
+
+---
+
+## Assumptions
+
+* Documents are primarily legal or contract-based.
+* OpenAI API access is available.
+* Uploaded documents are processed before querying.
+* Authentication is required before accessing protected endpoints.
+
+
+---
+
 
 ## System Architecture
 
@@ -475,49 +521,6 @@ RAG ensures:
 
 ---
 
-## Current Limitations
-
-### No User-Specific Document Isolation
-
-Documents uploaded by one authenticated user are currently available to all authenticated users.
-
-Document ownership and access control have not yet been implemented.
-
-### No Conversational Memory
-
-Each question is processed independently.
-
-Previous questions and responses are not retained as conversational context.
-
-### Local Vector Storage
-
-ChromaDB is stored locally inside the project and is not configured as a distributed or managed vector database.
-
-
-
-## Evaluation Objectives
-
-This project demonstrates:
-
-* Document Understanding
-* Semantic Retrieval
-* Retrieval-Augmented Generation (RAG)
-* FastAPI Backend Development
-* Authentication & Authorization
-* Vector Search Implementation
-* AI-Powered Contract Question Answering
-
----
-
-## Assumptions
-
-* Documents are primarily legal or contract-based.
-* OpenAI API access is available.
-* Uploaded documents are processed before querying.
-* Authentication is required before accessing protected endpoints.
-
----
-
 ## Author
 
-Developed as part of the AI-Based Contract Analysis System Take-Home Assignment.
+Developed as part of the AI-Based Contract Analysis System By Anilesh Mathur.
