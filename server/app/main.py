@@ -1,6 +1,20 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from app.api import documents,query
+
+from app.core.db import connect_to_mongo, close_mongo
+from app.core.middleware import cors_middlewares
+from app.routes.index_route import api_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await connect_to_mongo()
+    yield
+    await close_mongo()
+
+
+
 app = FastAPI(
     title="AI Contract Analysis System",
     description="""
@@ -19,25 +33,9 @@ Upload legal/contract documents and ask questions grounded in their content.
         "name": "Anilesh Mathur",
         "email": "dev.kg.mathurji@gmail.com",
     },
+    lifespan=lifespan,
 )
 
+cors_middlewares(app)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-@app.get('/')
-async def root():
-    return {
-        "status": "running",
-        "message": "AI Contract Analysis System is live",
-        "docs": "/docs",
-    }
-
-
-app.include_router(documents.router,prefix="/api/v1/documents")
-app.include_router(query.router,prefix="/api/v1/query")
+app.include_router(api_router)

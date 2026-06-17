@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     chunk_size: int = 1000
     chunk_overlap: int = 150
     retrieval_top_k: int = 4
+    secret_key:str
+    algorithm:str
+    access_token_expire_minutes:int
+    
     
 
 
